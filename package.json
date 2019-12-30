@@ -1,0 +1,12 @@
+{
+  "name": "zf-webpack-demo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:ppambler/zf-webpack-demo.git",
+  "author": "ppambler <allinlbj@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
+  }
+}
