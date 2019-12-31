@@ -2,6 +2,9 @@
   "name": "zf-webpack-demo",
   "version": "1.0.0",
   "main": "index.js",
+  "scripts": {
+    "build": "webpack --config webpack.config.js"
+  },
   "repository": "git@github.com:ppambler/zf-webpack-demo.git",
   "author": "ppambler <allinlbj@gmail.com>",
   "license": "MIT",

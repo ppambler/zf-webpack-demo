@@ -6,6 +6,9 @@ console.log(path.resolve('dist')) //g:\git-2019\zf-webpack-demo\dist
 
 console.log(path.resolve(__dirname, 'dist'))
 
+console.log(path.resolve())
+console.log(path.resolve(__dirname))
+
 // 导出配置文件
 
 module.exports = {
