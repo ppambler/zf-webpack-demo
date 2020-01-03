@@ -2,6 +2,13 @@ let path = require("path");
 let HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
+  // devServer: {
+  //   //开发服务器的配置
+  //   port: 3000,
+  //   progress: true,
+  //   contentBase: "./build",
+  //   compress: true
+  // },
   mode: "development",
   entry: "./src/index.js",
   output: {

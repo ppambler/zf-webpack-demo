@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h1>我是测试webpack-dev-server的默认配置是以打包的index.html为首页，
+    还有以项目根目录下的index.html为首页</h1>
+  <p>测试结果：如果我们没有配置html插件，那么webpack-dev-server默认是以项目的根目录作为静态服务的</p>
+  <p>也就是说，localhost:8080打开的index.html是来于根目录下的index.html</p>
+  <p>如果我们写了html插件，那么默认就会找打包结果的html，而不是项目根目录下的index.html</p>
+  <p>如果我们对webpack-dev-server进行了配置，即配置了contentBase="./build"，而且没有配置html插件，那么会找build目录下index.html</p>
+  
+  <p>小结：webpack-dev-server默认配置：以项目根目录为静态服务，但如果配置了html插件，那么会以打包好的index.html作为首页，如果没有，则会以项目根目录下的index.html作为首页</p>
+
+
+</body>
+</html>
