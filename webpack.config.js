@@ -1,14 +1,8 @@
 let path = require("path");
 let HtmlWebpackPlugin = require("html-webpack-plugin");
+let miniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-  // devServer: {
-  //   //开发服务器的配置
-  //   port: 3000,
-  //   progress: true,
-  //   contentBase: "./build",
-  //   compress: true
-  // },
   mode: "development",
   entry: "./src/index.js",
   output: {
@@ -18,34 +12,23 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: "./src/index.html",
-      filename: "index.html",
-      minify: {
-        removeAttributeQuotes: true,
-        collapseWhitespace: true
-      },
-      hash: true
+      filename: "index.html"
+    }),
+    new miniCssExtractPlugin({
+      filename: "main.css"
     })
   ],
   module: {
     rules: [
       {
         test: /\.css$/,
-        use: [
-          {
-            loader: "style-loader",
-            options: getStyleOptions()
-          },
-          "css-loader"
-        ]
+        use: [miniCssExtractPlugin.loader, "css-loader"]
       },
       {
         // 可以处理less文件
         test: /\.less$/,
         use: [
-          {
-            loader: "style-loader",
-            options: getStyleOptions()
-          },
+          miniCssExtractPlugin.loader,
           "css-loader", // @import 解析路径
           "less-loader" // 把less -> css
         ]
