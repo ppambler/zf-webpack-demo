@@ -1,8 +1,15 @@
 let path = require("path");
 let HtmlWebpackPlugin = require("html-webpack-plugin");
 let miniCssExtractPlugin = require("mini-css-extract-plugin");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const TerserJSPlugin = require("terser-webpack-plugin");
 
 module.exports = {
+  optimization: {
+    //优化项
+    // 处理压缩css以外还得压缩js，因此这是一个数组
+    minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})]
+  },
   mode: "development",
   entry: "./src/index.js",
   output: {
