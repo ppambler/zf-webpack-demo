@@ -22,7 +22,7 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        use: [miniCssExtractPlugin.loader, "css-loader"]
+        use: [miniCssExtractPlugin.loader, "css-loader", "postcss-loader"]
       },
       {
         // 可以处理less文件
@@ -30,6 +30,7 @@ module.exports = {
         use: [
           miniCssExtractPlugin.loader,
           "css-loader", // @import 解析路径
+          "postcss-loader",
           "less-loader" // 把less -> css
         ]
       }
