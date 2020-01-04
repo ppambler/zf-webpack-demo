@@ -11,6 +11,8 @@ let fn = () => {
 
 fn();
 
+@log
+@nextAlphabet
 class A {
   //var o = new A() o.a=1，这是es7语法
   a = 1;
@@ -19,3 +21,15 @@ class A {
 var o = new A();
 
 console.log(o.a);
+o.nextAlphabet();
+console.log(o);
+
+function log(target) {
+  console.log(target);
+}
+
+function nextAlphabet(target) {
+  target.prototype.nextAlphabet = () => {
+    console.log("B");
+  };
+}
