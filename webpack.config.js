@@ -13,7 +13,7 @@ module.exports = {
   mode: "development",
   entry: "./src/index.js",
   output: {
-    filename: "bundle.[hash:8].js",
+    filename: "bundle.js",
     path: path.resolve(__dirname, "build")
   },
   plugins: [
@@ -27,6 +27,17 @@ module.exports = {
   ],
   module: {
     rules: [
+      {
+        test: /\.js$/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets:[
+              '@babel/preset-env'
+            ]
+          }
+        }
+      },
       {
         test: /\.css$/,
         use: [miniCssExtractPlugin.loader, "css-loader", "postcss-loader"]
