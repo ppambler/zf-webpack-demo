@@ -4,11 +4,16 @@ let miniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const TerserJSPlugin = require("terser-webpack-plugin");
 
+const webpack = require("webpack");
+
 module.exports = {
   optimization: {
     //优化项
     // 处理压缩css以外还得压缩js，因此这是一个数组
     minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})]
+  },
+  externals: {
+    jquery: "$"
   },
   mode: "development",
   entry: "./src/index.js",
@@ -24,18 +29,23 @@ module.exports = {
     new miniCssExtractPlugin({
       filename: "main.css"
     })
+    // new webpack.ProvidePlugin({
+    //   //在每个模块里边都注入$
+    //   $: "jquery"
+    // })
   ],
   module: {
     rules: [
-      {
-        test: /\.js$/,
-        use: {
-          loader: "eslint-loader",
-          options: {
-            enforce: "pre"
-          }
-        }
-      },
+      // { test: require.resolve("jquery"), use: "expose-loader?$" },
+      // {
+      //   test: /\.js$/,
+      //   use: {
+      //     loader: "eslint-loader",
+      //     options: {
+      //       enforce: "pre"
+      //     }
+      //   }
+      // },
       {
         test: /\.js$/,
         use: {
