@@ -35,10 +35,14 @@ module.exports = {
             presets: ["@babel/preset-env"],
             plugins: [
               ["@babel/plugin-proposal-decorators", { legacy: true }],
-              ["@babel/plugin-proposal-class-properties", { loose: true }]
+              ["@babel/plugin-proposal-class-properties", { loose: true }],
+              "@babel/plugin-transform-runtime",
+              "@babel/plugin-transform-modules-commonjs"
             ]
           }
-        }
+        },
+        include: path.resolve(__dirname, "src"),
+        exclude: /node_modules/
       },
       {
         test: /\.css$/,
