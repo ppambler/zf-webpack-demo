@@ -36,21 +36,16 @@ module.exports = {
   ],
   module: {
     rules: [
-      {
-        test: /\.html$/,
-        use: {
-          loader: "html-loader"
-        }
-      },
-      {
-        test: /\.(png|jpe?g|gif)$/i,
-        use: {
-          loader: "file-loader",
-          options: {
-            esModule: false
-          }
-        }
-      },
+      // { test: require.resolve("jquery"), use: "expose-loader?$" },
+      // {
+      //   test: /\.js$/,
+      //   use: {
+      //     loader: "eslint-loader",
+      //     options: {
+      //       enforce: "pre"
+      //     }
+      //   }
+      // },
       {
         test: /\.js$/,
         use: {

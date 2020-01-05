@@ -3,5 +3,11 @@
 
 body {
   color: red;
-  transform: rotate(45deg);
+  /* transform: rotate(45deg); */
+}
+
+div {
+  width: 300px;
+  height: 200px;
+  background: url('./300-200.jpg');
 }
