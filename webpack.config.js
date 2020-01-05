@@ -20,6 +20,7 @@ module.exports = {
   output: {
     filename: "bundle.js",
     path: path.resolve(__dirname, "build")
+    // publicPath: "localhost:8080/" //给资源加上域名cdn
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -27,7 +28,7 @@ module.exports = {
       filename: "index.html"
     }),
     new miniCssExtractPlugin({
-      filename: "main.css"
+      filename: "css/main.css"
     })
     // new webpack.ProvidePlugin({
     //   //在每个模块里边都注入$
@@ -52,7 +53,10 @@ module.exports = {
           loader: "url-loader",
           options: {
             esModule: false,
-            limit: 10 * 1024
+            limit: 2 * 1024,
+            name: "[name].[hash:4].[ext]",
+            outputPath: "img/"
+            // publicPath: "localhost:8080/img/"
           }
         }
       },
@@ -75,13 +79,27 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [miniCssExtractPlugin.loader, "css-loader", "postcss-loader"]
+        use: [
+          {
+            loader: miniCssExtractPlugin.loader,
+            options: {
+              publicPath: "../"
+            }
+          },
+          "css-loader",
+          "postcss-loader"
+        ]
       },
       {
         // 可以处理less文件
         test: /\.less$/,
         use: [
-          miniCssExtractPlugin.loader,
+          {
+            loader: miniCssExtractPlugin.loader,
+            options: {
+              publicPath: "../"
+            }
+          },
           "css-loader", // @import 解析路径
           "postcss-loader",
           "less-loader" // 把less -> css
