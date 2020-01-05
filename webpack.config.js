@@ -44,10 +44,15 @@ module.exports = {
       },
       {
         test: /\.(png|jpe?g|gif)$/i,
+        // url-loader包含file-loader
+        // 使用url-loader是为了做一个限制
+        // 当我们的图片 小于 多少K的时候 用base64来转化
+        // 否则就用file-loader产生真实的图片
         use: {
-          loader: "file-loader",
+          loader: "url-loader",
           options: {
-            esModule: false
+            esModule: false,
+            limit: 10 * 1024
           }
         }
       },
